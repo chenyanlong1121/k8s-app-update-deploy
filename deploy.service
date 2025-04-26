@@ -1,0 +1,18 @@
+[Unit]
+Description=kubernetes application update deploy
+After=network.target
+
+[Service]
+Type=sample
+User=root
+ExecStart=/usr/local/bin/start-deploy.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitNOFILE=65535
+LimitNPROC=65535
+LimitCORE=65535
+#TasksMax=infinity
+TimeoutStartSec=0
+Delegate=yes
+KillMode=process
+[Install]
+WantedBy=multi-user.target
